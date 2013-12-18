@@ -5,3 +5,4 @@
 /// <reference path="respond.js" />
 /// <reference path="../content/beta/index.js" />
 /// <reference path="bootstrap-datepicker.js" />
+/// <reference path="knockout-3.0.0.js" />
