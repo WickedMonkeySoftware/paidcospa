@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Paid That Company</h1>
+    <p class="lead">Bringing bill payment, budgeting and saving all together.</p>
+    @Html.ActionLink("Get Started »", "Beta", "Home", null, new { @class = "btn btn-default" })
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            Sign up for our beta program, join our mailing list and be one of our first users! <span class="text-info">We promise we won't share your information or send you spam.</span>
+        </p>
+        <p>@Html.ActionLink("Get Started »", "Beta", "Home", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Learn about our book</h2>
+        <p>We're writing a book about our revolutionary budgeting paradigm and how to use it in your everyday life.</p>
+        <p>@Html.ActionLink("Learn More »", "Book", "Home", null, new { @class = "btn btn-default" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Learn about our history</h2>
+        <p>Our founder, Robert Landers, has been perfecting this process for years to make it work for everyone. Read about his experiences.</p>
+        <p>@Html.ActionLink("Learn More »", "About", "Home", null, new { @class = "btn btn-default" })</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <h1>A different way to manage your bills, budget and savings <small></small></h1>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <p>Our goal is to bring everything together, from bill payment to budgets to money management. We just so happened to also create a revolutionary way to do all these things.</p>
+        <p>We plan to bring it all together in a form that's easy to work with, doesn't take a lot of your time out of your day, and just plain simple.</p>
+    </div>
+    <div class="col-lg-6">
+        <p>Originally, we came up with something that was complicated and cumbersome. But we went back to the drawing board and redesigned everything from the ground up. @Html.ActionLink("Sign up", "Beta", "Home", null, new { @class = "" }) for our beta program and use the next big thing in saving/budgeting/bill payment software.</p>
+    </div>
+</div>

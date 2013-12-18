@@ -1,0 +1,48 @@
+﻿@section head {
+    <script type="text/javascript">
+        var formData = function () {
+            var query_string = (location.search) ? ((location.search.indexOf('#') != -1) ? location.search.substring(1, location.search.indexOf('#')) : location.search.substring(1)) : '';
+            var elements = [];
+            if (query_string) {
+                var pairs = query_string.split("&");
+                for (i in pairs) {
+                    if (typeof pairs[i] == 'string') {
+                        var tmp = pairs[i].split("=");
+                        var queryKey = unescape(tmp[0]);
+                        queryKey = (queryKey.charAt(0) == 'c') ? queryKey.replace(/\s/g, "_") : queryKey;
+                        elements[queryKey] = unescape(tmp[1]);
+                    }
+                }
+            }
+            return {
+                display: function (key) {
+                    if (elements[key]) {
+                        document.write(elements[key]);
+                    }
+                    else {
+                        document.write("<!--If desired, replace everything between these quotes with a default in case there is no data in the query string.-->");
+                    }
+                }
+            }
+        }
+       (); </script>
+}
+
+@{
+    ViewBag.Title = "Beta Sign Up";
+    ViewBag.Message = "You're almost there!";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <h1>@ViewBag.Title <small>@ViewBag.Message</small></h1>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1 col-lg-push-1">
+        <h2>Only one more step remaining!</h2>
+        <p class="text-info">Check your email for your confirmation link and after clicking it, you're all set!</p>
+    </div>
+</div>

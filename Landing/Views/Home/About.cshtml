@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "About Us";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <h1>@ViewBag.Title <small>@ViewBag.Message</small></h1>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <h2>The Beginning</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <p class="lead">The concept started in 2011, with a spreadsheet to keep track of simple bills. All it did was keep track of what a bill was, when it was due and whether or not it was paid.</p>
+        <p>Before long, it had expanded into a very complex spreadsheet that told him exactly how much to take from each paycheck to pay his bill. The spreadsheet told him how much he needed to save, and how much he could spend. But <strong>why</strong> the spreadsheet came into existance is an even more interesting story.</p>
+        <blockquote>
+            <p>I wanted something pro-active, <strong>not</strong> reactive.</p>
+            <small>Robert Landers <cite title="Founder of Paid That Company,LLC">Founder</cite></small>
+        </blockquote>
+        <p>The spreadsheet was created because Robert could not find anything on the web that was pro-active. Everything he could find was reactive, based on his previous actions. He wanted something that could tell him about <em>today</em> without hurting him <em>tomorrow</em>.</p>
+        <p>Thus the spreadsheet was born.</p>
+    </div>
+    <div class="col-lg-6">
+        <p>After a year of use, Robert decided to try making it more flexible. He wanted to be able to use it on his phone or at his office. He created Paid That Company to make it a reality, and allow the entire world to benefit from his project.</p>
+        <p>Soon after the company was ready to release the beta, they hit a number of road bumps. They wanted to integrate with a popular money management suite that backed out at the last second. The software was too cumbersome and complicated for some people and their payment processor that was to pay people's bills backed out too. Needless to say, it looked like they'd hit a brick wall.</p>
+        <p>Coming back to the drawing board, the company started over completely from scratch. They redesigned every aspect of the software, knowing they were going out into the world without the support of the <u>big brands</u>.</p>
+        <p>And now they begin their journey.</p>
+        <p>@Html.ActionLink("Join the Beta", "Beta", "Home", null, new { @class="btn btn-primary" })</p>
+    </div>
+</div>

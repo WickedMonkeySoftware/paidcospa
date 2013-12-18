@@ -1,0 +1,227 @@
+﻿@{
+    ViewBag.Title = "Beta";
+    ViewBag.Message = "Start using it.";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <h1>@ViewBag.Title <small>@ViewBag.Message</small></h1>
+        </div>
+    </div>
+</div>
+
+<div id="logged-in" style="display:none;">
+    <div class="row" id="loading">
+        <div class="col-lg-12">
+            <p class="text-center">
+                <i class="fa fa-spin fa-gear fa-fw fa-4x">
+                </i>
+                <br />
+                Processing Your Account
+            </p>
+        </div>
+    </div>
+    <div id="step-1" style="display:none;">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Tell us more about you.</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Please tell us a little more about you so we can provide you with the best service possible.</p>
+            </div>
+        </div>
+        <form class="form-horizontal" role="form" onsubmit="Beta.SubmitStep(1); return false;">
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10 input-group">
+                    <span class="input-group-addon">@@</span>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="me@example.com" name="email" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-2 control-label">First Name</label>
+                <div class="col-sm-10 input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control" id="inputFName" placeholder="John" name="firstName" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName" class="col-sm-2 control-label">Last Name</label>
+                <div class="col-sm-10 input-group">
+                    <span class="input-group-addon"><i class="fa-user fa"></i></span>
+                    <input type="text" class="form-control" id="inputLName" placeholder="Doe" name="lastName" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-info">Create My Account</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="step-2" style="display:none;">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Who do you owe money to?</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>
+                    Now we'll add your services so that we can pay your bills. Services are people that you owe money to on a regular or one-off basis.
+                </p>
+            </div>
+        </div>
+        <form class="form-horizontal" role="form" onsubmit="return Beta.SubmitStep(2);">
+            <div class="form-group">
+                <label for="new-service" class="col-sm-2 control-label">Service Label</label>
+                <div class="col-sm-10 input-group">
+                    <span class="input-group-addon"><i class="fa fa-inbox"></i></span>
+                    <input type="text" class="form-control" id="new-service" placeholder="Cable, Cell Phone, etc." />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-info">Create the Service</button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-0" id="service-hider" style="display:none;">
+                <table class="table table-striped" id="services">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <button class="btn btn-success disabled" id="submit4" onclick="Beta.SubmitStep(4);">Finish adding your bills to continue</button>
+            </div>
+        </div>
+    </div>
+    <div id="step-3" style="display:none;">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>The Bills <small id="service-name"></small></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>
+                    Give us some information about this bill.
+                </p>
+            </div>
+        </div>
+        <form class="form-horizontal" role="form" onsubmit="return Beta.SubmitStep(3);">
+            <div class="form-group">
+                <label for="period-start" class="col-sm-2 control-label">Bill Period Start</label>
+                <div class="col-sm-10 input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="date" class="form-control" id="period-start" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="period-end" class="col-sm-2 control-label">Bill Period End</label>
+                <div class="col-sm-10 input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="date" class="form-control" id="period-end" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="due-on" class="col-sm-2 control-label">Due On</label>
+                <div class="col-sm-10 input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="date" class="form-control" id="due-on" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bill-amount" class="col-sm-2 control-label">Bill Amount</label>
+                <div class="col-sm-10 input-group">
+                    <span class="input-group-addon">$</span>
+                    <input type="number" max="10000" min="0" step="0.01" class="form-control" id="bill-amount" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-info">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="step-4" style="display:none;">
+    </div>
+    <div id="step-5" style="display:none;">
+
+    </div>
+</div>
+
+<div id="logged-out" style="display:none;">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-6">
+            <p class="text-center">
+                <i class="fa fa-facebook fa-5x"></i>
+                <br />
+                <button class="btn btn-info" id="fb">Sign In using Facebook</button>
+            </p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+            <p class="text-center">
+                <i class="fa fa-twitter fa-5x"></i>
+                <br>
+                <button class="btn btn-info" id="twitter">Sign In using Twitter</button>
+            </p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+            <p class="text-center">
+                <i class="fa fa-google-plus fa-5x"></i>
+                <br />
+                <button class="btn btn-info" id="goog">Sign In using Google+</button>
+            </p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+            <p class="text-center">
+                <i class="fa fa-windows fa-5x"></i>
+                <br />
+                <button id="live-id" class="btn btn-info">Sign In using Live ID</button>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-center lined">
+            <h1>or</h1>
+        </div>
+    </div>
+    <form role="form" class="form-horizontal" onsubmit="Beta.DoCustomCreate();">
+        <div class="form-group">
+            <label for="userid" class="col-sm-2 control-label">User Name</label>
+            <div class="col-sm-10 input-group">
+                <input type="text" id="userid" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10 input-group">
+                <input type="password" id="password" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Go</button>
+            </div> 
+        </div>
+    </form>
+</div>
+
+@section scripts {
+    <script src="/Content/Beta/Index.js"></script>
+}
